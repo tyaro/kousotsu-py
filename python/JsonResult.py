@@ -41,11 +41,11 @@ if __name__ == "__main__":
     print(conn.is_connected())
     cur = conn.cursor()
     # Trueと表示されれば、正常に接続できています
-    sql = 'SELECT * ,ShortPoint_Kousotsu + LongPoint_Kousotsu as STAR  FROM VIEW_TODAY_RESULT_INFO'
+    sql = 'SELECT * ,ShortPoint_Kousotsu + LongPoint_Kousotsu as STAR  FROM VIEW_CRYPTO_INFO_RESULT'
     #sql = 'select * from VIEW_BINANCE_CRYPTO_INFO2'
     cur.execute(sql)
     rows = cur.fetchall()
-    cur.execute("DESC VIEW_TODAY_RESULT_INFO")
+    cur.execute("DESC VIEW_CRYPTO_INFO_RESULT")
     colName = cur.fetchall()
     cur.close()
     conn.close()
@@ -53,8 +53,8 @@ if __name__ == "__main__":
     header = ["計算時刻","★★判断★★","通貨ペア","現在価格","適正価格(今日)","適正価格(明日)","適正価格(明後日)","適正価格乖離率","ロングエントリ推奨価格","ショートエントリ推奨価格","EMA(200)","EMA(100)","EMA(50)","EMA(200)BTC建て","価格変動率","BTC連動率上昇","BTC連動率下落","RSI(14)","RSI(14)BTC建て","ロング評価","ショート評価","小数点位置","STAR"]
 
 
-    src = '/home/xs713818/kousotsu-py.info/public_html/csv/binance_crypto_info_result.csv'
-    dst = '/home/xs713818/kousotsu-py.info/public_html/json/binance_crypto_info_result.json'
+    src = './public_html/csv/binance_crypto_info_result.csv'
+    dst = './public_html/json/binance_crypto_info_result.json'
 
     with open(src,'w') as f:
         writer = csv.writer(f)
