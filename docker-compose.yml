@@ -62,7 +62,7 @@ services:
     image: "nginx:latest"
     container_name: 'nginx'
     ports:
-      - "10080:80"
+      - "10081:80"
     volumes:
       - ./python/public_html:/usr/share/nginx/html
 
