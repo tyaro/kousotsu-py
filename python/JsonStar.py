@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 import mysql.connector as mydb
-import pandas as pd
-import sqlalchemy as sa
 import json
-from datetime import date,datetime
-import pprint
 import csv
 
 # date, datetimeの変換関数
