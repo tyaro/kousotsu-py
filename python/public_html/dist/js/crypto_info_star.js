@@ -1,0 +1,164 @@
+$(function(){
+    // セルの値がマイナスの時、赤で表示する。
+    var disp_red=function(cell){ // 引数はセルデータ(cell)
+        var val = cell.getValue(); // セルの値を取得
+        if(val<0) { // 値がマイナスの場合、赤を設定。
+            cell.getElement().style.color="#ff0000";
+        }
+        return val; // 表示する値を返す
+    }
+    // 
+    var add_percent=function(cell){ // 引数はセルデータ(cell)
+        var val = cell.getValue(); // セルの値を取得
+        if(val<0) { // 値がマイナスの場合、赤を設定。
+            cell.getElement().style.color="#ff0000";
+        }
+        val = val + "%"
+        return val; // 表示する値を返す
+    }
+    var table = new Tabulator("#example-table", {
+        ajaxURL:"json/binance_crypto_info_star.json?version=202106182216",
+        layout:"fitDataTable",
+        height:"1000px",
+        responsiveLayout:"hide",
+        tooltipsHeader:true,
+        tooltips:true,
+        addRowPos:"top",
+        history:true,
+        pagination:"local",
+        paginationSize:200,
+        movableColumns:true,
+        resizableRows:true,
+        initialSort:[
+            {column:"通貨ペア", dir:"asc"},
+        ],
+        columns:[
+            {
+                title:"高卒<br>たん<br>判断", 
+                field:"★★判断★★", 
+                editor:false, 
+                tooltip:"高卒たんメソッド",
+                headerFilter:true,
+            },
+            {
+                title:"高卒たん<br>評価", 
+                field:"STAR", 
+                formatter:"star",
+                editor:false, 
+                tooltip:"高卒たん\n評価",
+            },
+            {
+                title:"通貨ペア", 
+                field:"通貨ペア", 
+                editor:false, 
+                tooltip:"通貨ペア",
+                headerFilter:true
+            },
+            {
+                title:"現在価格", 
+                field:"現在価格", 
+                editor:false, 
+                tooltip:"現在価格",
+            },
+            {
+                title:"適正価格<br>(今日)", 
+                field:"適正価格(今日)", 
+                editor:false,
+                tooltip:"適正価格(今日)",
+            },
+            {
+                title:"適正価格<br>(明日)", 
+                field:"適正価格(明日)", 
+                editor:false, 
+                tooltip:"適正価格(明日)",
+            },
+            {
+                title:"適正価格<br>(明後日)", 
+                field:"適正価格(明後日)", 
+                editor:false, 
+                tooltip:"適正価格(明後日)",
+            },
+            {
+                title:"適正価格<br>乖離率", 
+                field:"適正価格乖離率", 
+                formatter:add_percent,
+                editor:false, 
+                tooltip:"適正価格乖離率",
+            },
+            {
+                title:"ロング<br>エントリ<br>推奨価格", 
+                field:"ロングエントリ推奨価格", 
+                editor:false, 
+                tooltip:"ロングエントリ推奨価格",
+            },
+            {
+                title:"ショート<br>エントリ<br>推奨価格", 
+                field:"ショートエントリ推奨価格", 
+                editor:false, 
+                tooltip:"ショートエントリ推奨価格",
+            },
+            {
+                title:"RSI<br>(14)", 
+                field:"RSI(14)", 
+                editor:false, 
+                tooltip:"RSI(14)",
+            },
+            {
+                title:"EMA<br>(200)<br>乖離率", 
+                field:"EMA(200)", 
+                formatter:add_percent,
+                editor:false, formatter:add_percent,
+                tooltip:"EMA(200)",
+            },
+            {
+                title:"EMA<br>(100)<br>乖離率", 
+                field:"EMA(100)", 
+                formatter:add_percent,
+                editor:false, 
+                tooltip:"EMA(100)\n乖離率",
+            },
+            {
+                title:"EMA<br>(50)<br>乖離率", 
+                field:"EMA(50)", 
+                formatter:add_percent,
+                editor:false, 
+                tooltip:"EMA(50)\n乖離率",
+            },
+            {
+                title:"EMA<br>(200)<br>BTC建て<br>乖離率", 
+                field:"EMA(200)BTC建て", 
+                formatter:add_percent,
+                editor:false, 
+                tooltip:"EMA(200)BTC建て\n乖離率",
+            },
+            {
+                title:"価格<br>変動率<br>9時〜", 
+                field:"価格変動率", 
+                formatter:add_percent,
+                editor:false, 
+                tooltip:"価格変動率\n9時〜",
+            },
+            {
+                title:"BTC<br>上昇<br>連動率<br>※EMA<br>24時間", 
+                field:"BTC連動率上昇", 
+                formatter:add_percent,
+                editor:false, 
+                tooltip:"BTC連動率上昇\n乖離率",
+            },
+            {
+                title:"BTC<br>下落<br>連動率<br>※EMA<br>24時間", 
+                field:"BTC連動率下落", 
+                formatter:add_percent,
+                editor:false, 
+                tooltip:"BTC連動率(下落)乖離率\n乖離率※EMA(24時間)",
+            },
+            {
+                title:"計算時刻", 
+                field:"計算時刻", 
+                editor:false, 
+                tooltip:"計算時刻",
+            },
+        ],
+    });
+});
+  
