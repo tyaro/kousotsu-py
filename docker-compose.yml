@@ -49,3 +49,20 @@ services:
     volumes:
       - ./python:/root/opt
   
+  redis:
+    image: "redis:latest"
+    container_name: 'redis'
+    ports:
+      - "26379:26379"
+    volumes:
+      - "./redis:/data"
+  
+  nginx:
+    restart: always
+    image: "nginx:latest"
+    container_name: 'nginx'
+    ports:
+      - "10080:80"
+    volumes:
+      - ./python/public_html:/usr/share/nginx/html
+
